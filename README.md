@@ -18,14 +18,14 @@ A clean, production-style **Node.js + Express** API that retrieves real-time wea
 
 ## 📚 Table of Contents
 
-1. Quick Start  
-2. Features  
-3. Project Structure  
-4. How It Works  
-5. API Documentation  
-6. Tech Stack  
-7. Environment Variables  
-8. License  
+1. Quick Start
+2. Features
+3. Project Structure
+4. How It Works
+5. API Documentation
+6. Tech Stack
+7. Environment Variables
+8. License
 
 ---
 
@@ -56,12 +56,12 @@ http://localhost:5000/api
 
 ## ✨ Features
 
-- Fetch weather by location  
-- Redis caching to reduce API overhead  
-- Rate limiting for safety  
-- Clean controller/model/service structure  
-- Minimal UI for interacting with the API  
-- Robust error handling  
+- Fetch weather by location
+- Redis caching to reduce API overhead
+- Rate limiting for safety
+- Clean controller/model/service structure
+- Minimal UI for interacting with the API
+- Robust error handling
 
 ---
 
@@ -69,16 +69,16 @@ http://localhost:5000/api
 
 Weather API/
 ├─ public/
-│  ├─ index.html
-│  ├─ weather.html
-│  ├─ scripts/
-│  └─ styles/
+│ ├─ index.html
+│ ├─ weather.html
+│ ├─ scripts/
+│ └─ styles/
 ├─ src/
-│  ├─ clients/
-│  ├─ controllers/
-│  ├─ models/
-│  ├─ routes/
-│  └─ services/
+│ ├─ clients/
+│ ├─ controllers/
+│ ├─ models/
+│ ├─ routes/
+│ └─ services/
 ├─ server.js
 └─ package.json
 
@@ -87,14 +87,17 @@ Weather API/
 ## 🔧 How It Works
 
 ### Request Flow
+
 Client → /api/weather → Controller → Model → Cache → External API
 
 ### Caching Strategy
-- Checks Redis first  
-- If cached → returned immediately  
-- If not → fetch → store in cache → return  
+
+- Checks Redis first
+- If cached → returned immediately
+- If not → fetch → store in cache → return
 
 ### Rate Limiting
+
 Uses `express-rate-limit` to prevent API abuse.
 
 ---
@@ -103,9 +106,9 @@ Uses `express-rate-limit` to prevent API abuse.
 
 ## GET /api/weather
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-location | string | Yes | Location name (e.g. "London")
+| Parameter | Type   | Required | Description                   |
+| --------- | ------ | -------- | ----------------------------- |
+| location  | string | Yes      | Location name (e.g. "London") |
 
 ### Example
 
@@ -135,22 +138,22 @@ GET /api/weather?location=Sydney
 
 ## 🧱 Tech Stack
 
-Layer | Technology
------ | ----------
-Backend | Node.js, Express  
-Cache | Redis  
-HTTP Client | Axios  
-Config | dotenv  
+| Layer       | Technology       |
+| ----------- | ---------------- |
+| Backend     | Node.js, Express |
+| Cache       | Redis            |
+| HTTP Client | Axios            |
+| Config      | dotenv           |
 
 ---
 
 ## 🔐 Environment Variables
 
-Variable | Description
--------- | -----------
-WEATHER_KEY | Visual Crossing API key  
-REDIS_PASS | Redis password  
-PORT | Port (default 5000)  
+| Variable    | Description             |
+| ----------- | ----------------------- |
+| WEATHER_KEY | Visual Crossing API key |
+| REDIS_PASS  | Redis password          |
+| PORT        | Port (default 5000)     |
 
 ---
 
