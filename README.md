@@ -2,6 +2,8 @@
 
 A clean, production-style **Node.js + Express** API that retrieves real-time weather data using the Visual Crossing API, with **Redis caching**, **rate limiting**, and a modular backend architecture.
 
+Project from https://roadmap.sh/projects/weather-api-wrapper-service
+
 ---
 
 <div align="center">
@@ -48,6 +50,9 @@ Start the server:
 ```
 npm start
 ```
+
+Demo URL:
+http://localhost:5000
 
 API Base URL:
 http://localhost:5000/api
@@ -116,24 +121,6 @@ Uses `express-rate-limit` to prevent API abuse.
 
 ```
 GET /api/weather?location=Sydney
-```
-
-### Example Response
-
-```
-{
-  "success": true,
-  "payload": {
-    "resolvedAddress": "Sydney, NSW, Australia",
-    "latitude": -33.87,
-    "longitude": 151.21,
-    "currentConditions": {
-      "temp": 24.1,
-      "conditions": "Clear"
-    }
-  },
-  "source": "cache"
-}
 ```
 
 ---
