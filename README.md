@@ -67,6 +67,7 @@ http://localhost:5000/api
 
 ## 📂 Project Structure
 
+```
 Weather API/
 ├─ public/
 │ ├─ index.html
@@ -81,6 +82,7 @@ Weather API/
 │ └─ services/
 ├─ server.js
 └─ package.json
+```
 
 ---
 
