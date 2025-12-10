@@ -8,7 +8,7 @@ Project from https://roadmap.sh/projects/weather-api-wrapper-service
 
 <div align="center">
 
-![Node.js](https://img.shields.io/badge/Node.js-18.x-green?style=for-the-badge&logo=node.js)
+![Node.js](https://img.shields.io/badge/Node.js-25.x-green?style=for-the-badge&logo=node.js)
 ![Express](https://img.shields.io/badge/Express.js-RestAPI-lightgrey?style=for-the-badge&logo=express)
 ![Redis](https://img.shields.io/badge/Redis-Cache-red?style=for-the-badge&logo=redis)
 ![Axios](https://img.shields.io/badge/Axios-HTTP-blue?style=for-the-badge&logo=axios)
