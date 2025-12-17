@@ -1,164 +1,91 @@
-# 🌤️ Weather API
+# Weather API
 
-A clean, production-style **Node.js + Express** API that retrieves real-time weather data using the Visual Crossing API, with **Redis caching**, **rate limiting**, and a modular backend architecture.
+A Node.js **Weather API** that retrieves current weather data from a third‑party weather service and caches responses using **Redis** to improve performance and reduce external API calls. The application exposes JSON API endpoints and also serves simple HTML pages for user interaction.
 
----
+Project from https://roadmap.sh/projects/weather-api-wrapper-service
 
-<div align="center">
+## Prerequisites
 
-![Node.js](https://img.shields.io/badge/Node.js-18.x-green?style=for-the-badge&logo=node.js)
-![Express](https://img.shields.io/badge/Express.js-RestAPI-lightgrey?style=for-the-badge&logo=express)
-![Redis](https://img.shields.io/badge/Redis-Cache-red?style=for-the-badge&logo=redis)
-![Axios](https://img.shields.io/badge/Axios-HTTP-blue?style=for-the-badge&logo=axios)
-![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+- Node.js runtime
+- Express framework
+- Redis server (local or managed)
 
-</div>
+## Installation
 
----
+1. **Clone the repository**
 
-## 📚 Table of Contents
-
-1. Quick Start
-2. Features
-3. Project Structure
-4. How It Works
-5. API Documentation
-6. Tech Stack
-7. Environment Variables
-8. License
-
----
-
-## 🚀 Quick Start
-
+```bash
+git clone <repository-url>
+cd weather-api
 ```
+
+2. **Install dependencies**
+
+```bash
 npm install
 ```
 
-Create a `.env` file:
+## Configuration
 
+### Environment Variables
+
+Create a `.env` file in the project root and configure the following variables:
+
+```env
+PORT=3000
+WEATHER_API_KEY=your_weather_api_key
+REDIS_HOST=localhost
 ```
-WEATHER_KEY=your_visual_crossing_api_key
-REDIS_PASS=your_redis_password
-PORT=5000
-```
+
+- `PORT` – Port the server runs on
+- `WEATHER_API_KEY` – API key for the external weather service
+- `REDIS_HOST` – Redis server host
+
+## Running the Application
 
 Start the server:
 
-```
+```bash
 npm start
 ```
 
-API Base URL:
-http://localhost:5000/api
-
----
-
-## ✨ Features
-
-- Fetch weather by location
-- Redis caching to reduce API overhead
-- Rate limiting for safety
-- Clean controller/model/service structure
-- Minimal UI for interacting with the API
-- Robust error handling
-
----
-
-## 📂 Project Structure
+The application will be available at:
 
 ```
-Weather API/
-├─ public/
-│ ├─ index.html
-│ ├─ weather.html
-│ ├─ scripts/
-│ └─ styles/
-├─ src/
-│ ├─ clients/
-│ ├─ controllers/
-│ ├─ models/
-│ ├─ routes/
-│ └─ services/
-├─ server.js
-└─ package.json
+http://localhost:3000
 ```
 
----
+## API Endpoints
 
-## 🔧 How It Works
+### Weather
 
-### Request Flow
+| Method | Endpoint                   | Description                         |
+| ------ | -------------------------- | ----------------------------------- |
+| GET    | `/api/weather?city=<city>` | Get current weather data for a city |
 
-Client → /api/weather → Controller → Model → Cache → External API
+Responses are cached in Redis with a configurable TTL to reduce repeated external API requests.
 
-### Caching Strategy
+## Caching Behavior
 
-- Checks Redis first
-- If cached → returned immediately
-- If not → fetch → store in cache → return
+- Weather data is cached using Redis
+- Cached responses expire after a default TTL (defined in the cache service)
+- If Redis is unavailable, the API continues to function without caching
 
-### Rate Limiting
+## Views
 
-Uses `express-rate-limit` to prevent API abuse.
+The server also serves basic HTML pages for interacting with the API:
 
----
+- Home page
+- Weather results page
 
-# 📘 API Documentation
+These pages communicate with the API using client-side JavaScript.
 
-## GET /api/weather
+## Notes
 
-| Parameter | Type   | Required | Description                   |
-| --------- | ------ | -------- | ----------------------------- |
-| location  | string | Yes      | Location name (e.g. "London") |
+- Redis is optional but recommended for performance
+- Cache logic is isolated in a dedicated service layer
+- Designed as a simple example of API + caching + views
 
-### Example
+## License
 
-```
-GET /api/weather?location=Sydney
-```
-
-### Example Response
-
-```
-{
-  "success": true,
-  "payload": {
-    "resolvedAddress": "Sydney, NSW, Australia",
-    "latitude": -33.87,
-    "longitude": 151.21,
-    "currentConditions": {
-      "temp": 24.1,
-      "conditions": "Clear"
-    }
-  },
-  "source": "cache"
-}
-```
-
----
-
-## 🧱 Tech Stack
-
-| Layer       | Technology       |
-| ----------- | ---------------- |
-| Backend     | Node.js, Express |
-| Cache       | Redis            |
-| HTTP Client | Axios            |
-| Config      | dotenv           |
-
----
-
-## 🔐 Environment Variables
-
-| Variable    | Description             |
-| ----------- | ----------------------- |
-| WEATHER_KEY | Visual Crossing API key |
-| REDIS_PASS  | Redis password          |
-| PORT        | Port (default 5000)     |
-
----
-
-## 📜 License
-
-MIT License — free for educational and portfolio use.
+This project is licensed under the ISC License.
