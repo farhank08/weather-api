@@ -52,11 +52,6 @@ npm start
 Demo URL:
 http://localhost:5000
 
-The application will be available at:
-
-```
-http://localhost:3000
-```
 
 ## API Endpoints
 
