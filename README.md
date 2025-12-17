@@ -49,6 +49,9 @@ Start the server:
 npm start
 ```
 
+Demo URL:
+http://localhost:5000
+
 The application will be available at:
 
 ```
